@@ -1,5 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
+
+from .forms import DataForm, DataFormset
 from .models import Data
 
 
@@ -9,17 +11,23 @@ def index(request):
     return render(request, 'app/index.html', context={'title': 'Главная страница'})
 
 
-def add_data(request):
+def add_data(request, *args, **kwargs):
     """ Страница ввода данных """
 
-    if request.method == 'POST':
-        # Т.к. вместе с данными передается токен, а request.POST неизменяем,
-        # то создаем копию request.POST и удаляем из него токен
-        cleaned_data = request.POST.copy()
-        del cleaned_data['csrfmiddlewaretoken']
-        Data.objects.create(data=cleaned_data)
-        return redirect('app:see_data')
-    return render(request, 'app/add_data.html', context={'title': 'Добавить данные'})
+    if request.method != 'POST':
+        formset = DataFormset()
+    else:
+        formset = DataFormset(data=request.POST)
+        if formset.is_valid():
+            Data.objects.create(data=formset.cleaned_data)
+            return redirect('app:see_data')
+
+    context = {
+        'title': 'Добавить данные',
+        'formset': formset
+    }
+
+    return render(request, 'app/add_data.html', context)
 
 
 def see_data(request):
