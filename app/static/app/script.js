@@ -1,7 +1,7 @@
 'use strict'
 
 const form = document.querySelector('.form');
-const add = document.querySelector('.add');
+const add = document.querySelector('#add');
 let count = 0
 
 addInput()
@@ -11,9 +11,9 @@ function addInput() {
     const input = document.createElement('input');
     count ++;
     label.classList.add('label');
-    label.textContent = `name_${count}`;
+    label.textContent = `Field ${count}`;
     input.classList.add('input');
-    input.name = `name_${count}`;
+    input.name = `field_${count}`;
     input.type = 'text'
     label.append(input);
     form.append(label);

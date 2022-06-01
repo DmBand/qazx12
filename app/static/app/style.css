@@ -1,10 +1,123 @@
-.form {
+/* Обнуление */
+*, *::before, *::after {
+    padding: 0;
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+img {
+    vertical-align: top;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: inherit;
+    font-size: inherit;
+}
+
+.container {
+    width: 100%;
+}
+
+.btns, .btns2 {
+    text-align: center;
     display: flex;
+    justify-content: center;
+    column-gap: 50px;
+}
+
+.btns {
+    margin: 200px auto;
+}
+
+.link {
+    width: 300px;
+    height: 300px;
+    background-color: rgb(2, 202, 142);
+    color: rgb(2, 112, 112);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 300px;
+    transition: 0.5s;
+}
+
+.link2 {
+    width: 500px;
+    height: 50px;
+    background-color: rgb(2, 202, 142);
+    color: rgb(2, 112, 112);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 50px;
+    transition: 0.5s;
+}
+
+
+.link:hover, .link2:hover {
+    background-color: bisque;
+}
+
+.add-data {
+    margin-top: 50px;
+}
+
+.form-btns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 10px;
+}
+
+.btn {
+    width: 130px;
+    height: 50px;
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+    font-weight: 700;
+    background-color: rgb(211, 206, 196);
+    cursor: pointer;
+}
+
+.form {
+    margin-top: 30px;
+    max-height: 520px;
+    overflow: auto;
+    display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
+    align-items: center;
     row-gap: 10px;
+    column-gap: 10px;
     margin-bottom: 10px;
+    padding-bottom: 20px;
+}
+
+.label {
+    width: 500px;
+    font-size: 20px;
 }
 
 .input {
-    margin-left: 10px;
+    width: 500px;
+    height: 30px;
+    border: 3px solid rgb(211, 206, 196);
+    padding: 5px 10px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 18px;
+    letter-spacing: 1px;
 }

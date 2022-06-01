@@ -2,6 +2,8 @@
 {% load static %}
 
 {% block content %}
-<a href="{% url 'app:add_data' %}">Add data</a>
-<a href="{% url 'app:see_data' %}">See data</a>
+<div class="btns">
+    <a class="link" href="{% url 'app:add_data' %}">Add data</a>
+    <a class="link" href="{% url 'app:see_data' %}">See data</a>
+</div>
 {% endblock content %}
