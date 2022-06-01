@@ -10,7 +10,7 @@
     <div class="form-btns">
         <button class="btn" id="add">Add field</button>
         <button class="btn" type="submit" form="1">Save</button>
-        <button class="btn" type="submit" name="reset" form="1">Reset</button>
+        <a class="btn2" href="">Reset</a>
     </div>
     <form action="{% url 'app:add_data' %}" method="post" class="form" id="1">
         {% csrf_token %}

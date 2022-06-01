@@ -14,7 +14,8 @@ function addInput() {
     label.textContent = `Field ${count}`;
     input.classList.add('input');
     input.name = `field_${count}`;
-    input.type = 'text'
+    input.type = 'text';
+    input.required = true;
     label.append(input);
     form.append(label);
 }
