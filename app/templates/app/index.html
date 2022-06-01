@@ -1,20 +1,7 @@
+{% extends 'app/base.html' %}
 {% load static %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="{% static 'app/style.css' %}">
-</head>
-<body>
-<form action="" method="post" class="form" id="1">
-    {% csrf_token %}
-    
-</form>
-<button type="submit" form="1">ok</button>
-<button type="submit" name="reset" form="1">reset</button>
-<button class="add">add</button>
-</body>
-<script type="module" src="{% static 'app/script.js' %}"></script>
-</html>
+{% block content %}
+<a href="{% url 'app:add_data' %}">Add data</a>
+<a href="{% url 'app:see_data' %}">See data</a>
+{% endblock content %}

@@ -1,0 +1,14 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+<a href="{% url 'app:index' %}">Home</a>
+<a href="{% url 'app:see_data' %}">See data</a>
+<form action="{% url 'app:add_data' %}" method="post" class="form" id="1">
+    {% csrf_token %}
+</form>
+<button type="submit" form="1">ok</button>
+<button type="submit" name="reset" form="1">reset</button>
+<button class="add">add</button>
+<script type="module" src="{% static 'app/script.js' %}"></script>
+{% endblock content %}

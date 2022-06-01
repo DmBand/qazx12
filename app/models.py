@@ -1,3 +1,6 @@
 from django.db import models
 
-# Create your models here.
+
+class Data(models.Model):
+    data = models.JSONField(verbose_name='данные')
+    date_added = models.DateTimeField(auto_now_add=True, verbose_name='дата добавления')
