@@ -1,6 +1,10 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 
 
-def index(request):
-    return HttpResponse('hello')
+def new_data(request):
+
+    if request.method == 'POST':
+        print(request.POST)
+        if 'reset' in request.POST:
+            return render(request, 'app/index.html')
+    return render(request, 'app/index.html')
