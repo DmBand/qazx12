@@ -19,18 +19,18 @@ def add_data(request, *args, **kwargs):
     else:
         formset = DataFormset(data=request.POST)
         if formset.is_valid():
-            print(dir(formset))
-            print(formset.data)
-            print(formset.cleaned_data)
-            data = formset.data.copy()
-            del data['csrfmiddlewaretoken']
-            del data['form-TOTAL_FORMS']
-            del data['form-INITIAL_FORMS']
-            del data['form-MIN_NUM_FORMS']
-            del data['form-MAX_NUM_FORMS']
-            print('data:', data)
-            # Data.objects.create(data=formset.cleaned_data)
-            # return redirect('app:see_data')
+            # Т.к. при стандартных cleaned_data данные сохраняются не очень красиво,
+            # то отредактировал их самостоятельно.
+            # Было: 01.06.2022 20:04:06: [{name: "data1"},{name: "data2"},{name: "data3"}]
+            # Стало: 01.06.2022 20:04:06: {form-0-name: "data1", form-1-name: "data2", form-2-name: "data3"}
+            cleaned_data = formset.data.copy()
+            del cleaned_data['csrfmiddlewaretoken']
+            del cleaned_data['form-TOTAL_FORMS']
+            del cleaned_data['form-INITIAL_FORMS']
+            del cleaned_data['form-MIN_NUM_FORMS']
+            del cleaned_data['form-MAX_NUM_FORMS']
+            Data.objects.create(data=cleaned_data)
+            return redirect('app:see_data')
 
     context = {
         'title': 'Добавить данные',
