@@ -1,7 +1,7 @@
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 
-from .forms import DataForm, DataFormset
+from .forms import DataFormset
 from .models import Data
 
 
@@ -11,7 +11,7 @@ def index(request):
     return render(request, 'app/index.html', context={'title': 'Главная страница'})
 
 
-def add_data(request, *args, **kwargs):
+def add_data(request):
     """ Страница ввода данных """
 
     if request.method != 'POST':
