@@ -19,8 +19,18 @@ def add_data(request, *args, **kwargs):
     else:
         formset = DataFormset(data=request.POST)
         if formset.is_valid():
-            Data.objects.create(data=formset.cleaned_data)
-            return redirect('app:see_data')
+            print(dir(formset))
+            print(formset.data)
+            print(formset.cleaned_data)
+            data = formset.data.copy()
+            del data['csrfmiddlewaretoken']
+            del data['form-TOTAL_FORMS']
+            del data['form-INITIAL_FORMS']
+            del data['form-MIN_NUM_FORMS']
+            del data['form-MAX_NUM_FORMS']
+            print('data:', data)
+            # Data.objects.create(data=formset.cleaned_data)
+            # return redirect('app:see_data')
 
     context = {
         'title': 'Добавить данные',
@@ -34,6 +44,7 @@ def see_data(request):
     """ Страница просмотра данных """
 
     data = Data.objects.all().values('data', 'date_added')
+    print(data)
     cleaned_data = {}
     for i in data:
         cleaned_data[i['date_added'].strftime("%d.%m.%Y %H:%M:%S")] = i['data']
