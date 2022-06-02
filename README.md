@@ -1,4 +1,6 @@
-# 2 версии:
+```Python 3.10```
+
+# Сделал в 2-х вариантах:
 **[1. С использованием ```formset```](https://github.com/DmBand/qazx12/tree/v2)**
 
 **[2. Без использования форм Django](https://github.com/DmBand/qazx12/tree/v1)**
