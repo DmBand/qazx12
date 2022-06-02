@@ -8,14 +8,21 @@
 </div>
 <div class="add-data">
     <div class="form-btns">
-        <button class="btn" id="add">Add field</button>
-        <button class="btn" type="submit" form="1">Save</button>
+        <button class="btn" id="add-form" type="button">Add field</button>
+        <button class="btn" type="submit" form="my-form">Save</button>
         <a class="btn2" href="">Reset</a>
     </div>
-    <form action="{% url 'app:add_data' %}" method="post" class="form" id="1">
+    <form action="{% url 'app:add_data' %}" method="post" class="form" id="my-form">
         {% csrf_token %}
+        {{formset.management_form}}
+        {% for form in formset %}
+            <div class="one-field">
+                <label id="{{ form.name.id_for_label }}" for="{{ form.name.id_for_label }}" class="label">Field 1</label>
+                {{ form.name }}            
+            </div>
+        {% endfor %}
+        <div class="hidden"></div>
     </form>
-   
 </div>
 <script type="module" src="{% static 'app/script.js' %}"></script>
 {% endblock content %}
