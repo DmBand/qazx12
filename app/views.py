@@ -44,7 +44,6 @@ def see_data(request):
     """ Страница просмотра данных """
 
     data = Data.objects.all().values('data', 'date_added')
-    print(data)
     cleaned_data = {}
     for i in data:
         cleaned_data[i['date_added'].strftime("%d.%m.%Y %H:%M:%S")] = i['data']
